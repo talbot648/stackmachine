@@ -11,6 +11,7 @@ A stack machine is a system that performs a sequence of simple operations on a s
 - "-": the machine pops the two topmost elements from the stack, subtracts the second one from the first (topmost) one and pushes the difference onto the stack.
 - "\*" pop the top two elements off the stack, multiply them together, push the result onto the stack
 - "CLEAR" empties the stack so it has no elements on it
+- "SUM" pops all elements off the stack, adds them together, and pushes the result onto the stack
 
 After processing all the operations, the machine returns the topmost value from the stack.
 
@@ -103,6 +104,8 @@ Examples:
 7. Given commands = "1 2 3 4 + CLEAR 12 +" returns an error
 
 8. Given commands = "1 CLEAR 2 3 +" returns 5
+
+9. Given commands = "1 2 3 SUM" returns 6
 
 Assume that:
 
