@@ -17,7 +17,7 @@ The following commands must be implemented:
 - "-": pop the most recent two numbers; subtract the second from the first most recent. push the result. If the result is below zero, return an error
 - "\*" pop the top two elements off the stack, multiply them together, push the result onto the stack
 - "CLEAR" empties the stack so it has no elements on it
-- "SUM" pops all elements off the stack, adds them together, and pushes the result onto the stack
+- "SUM" pops all elements off the stack, adds them together, and pushes the result onto the stack. The SUM of an empty stack is 0.
 
 Any other input is invalid. the machine must stop and return an error.
 
