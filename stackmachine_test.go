@@ -54,6 +54,7 @@ func TestAcceptanceTests(t *testing.T) {
 		{commands:"3 4 3 5 5 1 1 1 SUM", expected: 23, expectedErr: nil },
 		{commands:"3 4 3 5 CLEAR 5 1 1 1 SUM", expected: 8, expectedErr: nil },
 		{commands:"3 4 3 5 5 1 1 1 SUM -", expected: 0, expectedErr: errors.New("") },
+		{commands:"1 2 3 4 5 * * * *", expected: 120, expectedErr: nil },
 	}
 
 	for _, test := range tests {
