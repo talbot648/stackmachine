@@ -33,7 +33,7 @@ func TestAcceptanceTests(t *testing.T) {
 		{commands:"99 *", expected: 0, expectedErr: errors.New("") },
 		{commands:"99 CLEAR", expected: 0, expectedErr: errors.New("") },
 		{commands:"99 SUM", expected: 99, expectedErr: nil },
-		{commands:"SUM", expected: 0, expectedErr: nil },
+		{commands:"SUM", expected: 0, expectedErr: errors.New("") },
 		{commands:"5 6 + 2 *", expected: 22, expectedErr: nil },
 		{commands:"1 2 3 4 + CLEAR 12 +", expected: 0, expectedErr: errors.New("") },
 		{commands:"1 CLEAR 2 3 +", expected: 5, expectedErr: nil },
