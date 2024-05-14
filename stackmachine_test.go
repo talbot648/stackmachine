@@ -46,6 +46,7 @@ func TestAcceptanceTests(t *testing.T) {
 		{commands:"50000 50000 -", expected: 0, expectedErr: nil },
 		{commands:"CLEAR", expected: 0, expectedErr: errors.New("") },
 		{commands:"3 4 3 5 5 1 1 1 SUM", expected: 23, expectedErr: nil },
+		{commands:"3 4 3 5 CLEAR 5 1 1 1 SUM", expected: 8, expectedErr: errors.New("") },
 		{commands:"3 4 3 5 5 1 1 1 SUM -", expected: 0, expectedErr: errors.New("") },
 	}
 
