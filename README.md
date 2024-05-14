@@ -1,6 +1,6 @@
 # Stack Machine
 
-Write an emulator of a simple stack machine.
+Using test-first TDD, create a function which implements a stack based interpreter. This is a tiny version of a programming language interpreter.
 
 This machine is given a string, containing a sequence of commands. Each command is separated by one space. The commands operate on a stack of integers.
 
