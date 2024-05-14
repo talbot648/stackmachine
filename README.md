@@ -133,9 +133,13 @@ Result: The machine will return 3 and no error
 - `git clone` from this repo https://github.com/bjssacademy/stackmachine using either https or ssh (your preference; ssh recommended)
 - `go install`
 - Iterate and create the logic inside the function `func StackMachine( commands string ) (int, error)` to implement the requirements above
+
+And some general advice on approach:
+
 - Use a test-first TDD approach to drive towards a solution
 - Make sure you have a test for each one of the worked examples above
 - Add tests as required
+- Achieve 100% test coverage (using the go test coverage tool)
 - Add tests for the operations not listed as examples
 - Work in small steps
 - Do not implement main()
