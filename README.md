@@ -1,4 +1,4 @@
-# stackmachine
+# Stack Machine
 
 Write an emulator of a simple stack machine.
 
@@ -73,18 +73,21 @@ Given a string "5 6 + -", the machine reports an error. After the addition, ther
 
 Given a string "3 DUP 5 - -", the machine reports an error. The second subtraction yields a negative result.
 
-Work:
+## Work to be done
 
-- git clone this repo https://github.com/bjssacademy/stackmachine
+- `git clone` from this repo https://github.com/bjssacademy/stackmachine using either https or ssh (your preference; ssh recommended)
+- `go install`
 - create the logic inside the function
 
 `func StackMachine( commands string ) (int, error)`
 
 that, given a string 'commands' containing a sequence of operations for the stack machine, returns the result the machine would return after processing the operations. The function should return an error if the machine would report an error while processing the operations.
 
-- Use a test-first TDD approach to drive towards a solution.
-- All example tests must pass
-- All unit tests in the github repo must pass, prior to completion
+- Use a test-first TDD approach to drive towards a solution
+- Work in small steps
+- Do not implement main()
+- run using `go test ./...` or the VS Code IDE
+- All unit tests in TestAcceptanceTests() _must_ pass, prior to completion
 - Ask for help on your coding channels
 
 Examples:
@@ -109,7 +112,6 @@ Examples:
 
 Assume that:
 
-- The maximum number of commands is within the range [0..2,000];
 - The command input string is a valid sequence of word machine operations.
 - Each command is separated by a single space
 
