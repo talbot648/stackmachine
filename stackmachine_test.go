@@ -25,7 +25,7 @@ func TestAcceptanceTests(t *testing.T) {
 		expected int
 		expectedErr error		
 	}{
-		{commands:"no result", expected:0, expectedErr: errors.New("")},
+		{commands:"", expected:0, expectedErr: errors.New("")},
 		{commands:"50000 DUP +", expected: 0, expectedErr: errors.New("") },
 		{commands:"99 +", expected: 0, expectedErr: errors.New("") },
 		{commands:"99 -", expected: 0, expectedErr: errors.New("") },
