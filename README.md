@@ -87,6 +87,14 @@ the command sequence "50000 1 +" will:
 
 Result: The machine will stop and report an error
 
+### Example 50001
+
+The command "50001" will:
+
+- Stop the machine due to out of range value
+
+Result: The machine will report an error
+
 ### Example: 1 2 3 4 5 SUM
 
 The command sequence "1 2 3 4 5 SUM" will:
