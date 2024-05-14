@@ -21,6 +21,14 @@ After processing all the operations without errors, the machine returns the topm
 
 All numbers must lie between 0 and 50,000 inclusive. Any result that lies outside this range must stop the machine and return an error.
 
+### Example: 99
+
+The command "99" will:
+
+- Push the value 99 onto the stack
+
+Result: The machine will pop the most recent value off the stack (99) and return it, without error
+
 ### Example: 1 2 +
 
 The command sequence "1 2 +" will:
