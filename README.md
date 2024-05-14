@@ -98,7 +98,7 @@ Examples:
 
 5. Given commands = "50000 DUP +" returns an error
 
-6 Given commands = "5 6 + 2 \*" returns 22
+6. Given commands = "5 6 + 2 \*" returns 22
 
 7. Given commands = "1 2 3 4 + CLEAR 12 +" returns an error
 
