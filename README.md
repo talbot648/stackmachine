@@ -2,7 +2,9 @@
 
 Using test-first TDD, create a function which implements a stack based interpreter. This is a tiny version of a programming language interpreter.
 
-For further information on what a stack is, see the [BJSS Academy guide to stacks, queues, sorting and filtering](https://github.com/bjssacademy/go-stacks-queues-sort-filter)
+> For more on stacks see [BJSS Academy guide to stacks, queues, sorting and filtering](https://github.com/bjssacademy/go-stacks-queues-sort-filter)
+>
+> For more on TDD see [BJSS Academy guide to Advanced TDD](https://github.com/bjssacademy/advanced-tdd)
 
 This machine is given a string, containing a sequence of commands. Each command is separated by one space. The commands operate on a stack of integers.
 
@@ -114,6 +116,17 @@ The command "XXX-INVALID" will:
 - Stop the machine as XXX-INVALID is not a valid input
 
 Result: The machine will stop and report an error
+
+### Example: 2 5 -
+
+The commands "2 5 -" will:
+
+- Push 2 onto the stack
+- Push 5 onto the stack
+- Pop off the two numbers and subtract
+- The result 3 will be pushed on the stack
+
+Result: The machine will return 3 and no error
 
 ## Work to be done
 
