@@ -2,7 +2,6 @@ package main
 
 import (
 	"errors"
-	"fmt"
 	"testing"
 )
 
@@ -58,13 +57,17 @@ func TestAcceptanceTests(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		t.Run(fmt.Sprintf("%s -> %v, %v", test.commands, test.expected, test.expectedErr), func(t *testing.T) {
+		t.Run(test.commands, func(t *testing.T) {
 			
 			got, err := StackMachine(test.commands)
 
-			if test.expectedErr != err {
-				t.Errorf("got error %v, want %v", test.expectedErr, err)
-			} else if got != test.expected {
+			if (test.expectedErr != nil) {
+				if err == nil {
+					t.Error("Expected error, but received nil")
+				} else if err.Error() != test.expectedErr.Error()  {
+					t.Errorf("got error %v, want %v", err, test.expectedErr)
+				}
+			}  else if got != test.expected {
 				t.Errorf("got %v, want %v", got, test.expected)
 			}
 		})
