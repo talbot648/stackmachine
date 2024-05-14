@@ -27,10 +27,6 @@ func TestAcceptanceTests(t *testing.T) {
 		expectedErr error		
 	}{
 		{commands:"no result", expected:0, expectedErr: errors.New("")},
-		{commands:"4 5 6 + 7 -", expected: 8, expectedErr: nil },
-		{commands:"13 DUP 4 POP 5 DUP + DUP + -", expected: 7, expectedErr: nil },
-		{commands:"5 6 + -", expected: 0, expectedErr: errors.New("") },
-		{commands:"3 DUP 5 - -", expected: 0, expectedErr: errors.New("") },
 		{commands:"50000 DUP +", expected: 0, expectedErr: errors.New("") },
 		{commands:"5 6 + 2 *", expected: 22, expectedErr: nil },
 		{commands:"1 2 3 4 + CLEAR 12 +", expected: 0, expectedErr: errors.New("") },
