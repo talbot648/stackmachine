@@ -2,6 +2,8 @@
 
 Using test-first TDD, create a function which implements a stack based interpreter. This is a tiny version of a programming language interpreter.
 
+For further information on what a stack is, see the [BJSS Academy guide to stacks, queues, sorting and filtering](https://github.com/bjssacademy/go-stacks-queues-sort-filter)
+
 This machine is given a string, containing a sequence of commands. Each command is separated by one space. The commands operate on a stack of integers.
 
 The following commands must be implemented:
@@ -93,7 +95,7 @@ The command "50001" will:
 
 - Stop the machine due to out of range value
 
-Result: The machine will report an error
+Result: The machine will stop and report an error
 
 ### Example: 1 2 3 4 5 SUM
 
@@ -101,7 +103,7 @@ The command sequence "1 2 3 4 5 SUM" will:
 
 - Push the numbers 1, 2, 3, 4 and 5 onto the stack
 - Pop all numbers on the stack and add them up
-- Push thes result (15) onto the stack
+- Push the result (15) onto the stack
 
 Result: The machine will retun 15 and no error
 
@@ -111,13 +113,13 @@ The command "XXX-INVALID" will:
 
 - Stop the machine as XXX-INVALID is not a valid input
 
-Result: The machine will return an error
+Result: The machine will stop and report an error
 
 ## Work to be done
 
 - `git clone` from this repo https://github.com/bjssacademy/stackmachine using either https or ssh (your preference; ssh recommended)
 - `go install`
-- create the logic inside the function
+- Iterate and create the logic inside the function
 
 `func StackMachine( commands string ) (int, error)`
 
@@ -132,6 +134,7 @@ that, given a string 'commands' containing a sequence of operations for the stac
 - run using `go test ./...` or the VS Code IDE
 - All unit tests in TestAcceptanceTests() _must_ pass, prior to completion
 - Ask for help on your coding channels
+- Don't use AI tools. This is thinking practice!
 
 ### Assumptions
 
