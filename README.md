@@ -2,10 +2,6 @@
 
 Using test-first TDD, create a function which implements a stack based interpreter. This is a tiny version of a programming language interpreter.
 
-> For more on stacks see [BJSS Academy guide to stacks, queues, sorting and filtering](https://github.com/bjssacademy/go-stacks-queues-sort-filter)
->
-> For more on TDD see [BJSS Academy guide to Advanced TDD](https://github.com/bjssacademy/advanced-tdd)
-
 This machine is given a string, containing a sequence of commands. Each command is separated by one space. The commands operate on a stack of integers.
 
 The following commands must be implemented:
@@ -152,3 +148,18 @@ And some general advice on approach:
 
 - The command strings used will always be valid
 - Each command will be separated by a single space
+
+## Additional Resources
+
+- [Stacks, queues, sorting and filtering](https://github.com/bjssacademy/go-stacks-queues-sort-filter)
+- [Go in a day](https://github.com/bjssacademy/goinaday)
+- [Go Testing Basics](https://github.com/bjssacademy/go-testing-basics)
+- [Advanced TDD using Go](https://github.com/bjssacademy/advanced-tdd)
+- [Debugging with Go in VS Code](https://github.com/bjssacademy/go-debugging)
+- [Decomposing problems using Go](https://github.com/bjssacademy/decomposition-using-go)
+- [Programming fundamentals](https://github.com/bjssacademy/fundamentals-general)
+- [Writing Clean Code](https://github.com/bjssacademy/fundamentals-clean-code)
+- [Go Maps](https://github.com/bjssacademy/go-maps)
+- [Pointers in Go](https://github.com/bjssacademy/go-pointers)
+
+## Git repository with starter code
