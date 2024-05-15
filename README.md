@@ -163,3 +163,5 @@ And some general advice on approach:
 - [Pointers in Go](https://github.com/bjssacademy/go-pointers)
 
 ## Git repository with starter code
+
+[Stack Machine repo on Github](https://github.com/bjssacademy/stackmachine)
