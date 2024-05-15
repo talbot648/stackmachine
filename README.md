@@ -2,7 +2,9 @@
 
 Using test-first TDD, create a function which implements a stack based interpreter. This is a tiny version of a programming language interpreter.
 
-This machine is given a string, containing a sequence of commands. Each command is separated by one space. The commands operate on a stack of integers.
+This machine is given a string, containing a sequence of commands. Each command is separated by one space. The commands operate on a stack of integers. Assume that all command strings will be valid sequences without syntax errors.
+
+## Commands to implement
 
 The following commands must be implemented:
 
@@ -20,6 +22,12 @@ Any other input is invalid. the machine must stop and return an error.
 After processing all the operations without errors, the machine returns the topmost value from the stack. If an error occurs at any point, the machine stops further processing an returns an error.
 
 All numbers must lie between 0 and 50,000 inclusive. Any result that lies outside this range must stop the machine and return an error.
+
+## Example command sequences
+
+The following examples will clarify what the machine does.
+
+You must write a test for every one. All tests must pass.
 
 ### Example: 99
 
@@ -133,6 +141,9 @@ Result: The machine will return 3 and no error
 And some general advice on approach:
 
 - Use a test-first TDD approach to drive towards a solution
+- Think about which order to add support for commands. What order allows you to build on previous working code?
+- Steel Threading: Get an operation fully working before moving on
+- "Do not eat the whole elephant" - work in small steps
 - Make sure you have a test for each one of the worked examples above
 - Add tests as required
 - Achieve 100% test coverage (using the go test coverage tool)
