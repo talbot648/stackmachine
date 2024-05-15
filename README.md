@@ -164,4 +164,4 @@ And some general advice on approach:
 
 ## Git repository with starter code
 
-[Stack Machine repo on Github](https://github.com/bjssacademy/stackmachine)
+Link to this repo: [Stack Machine repo on Github](https://github.com/bjssacademy/stackmachine)
