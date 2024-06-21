@@ -85,6 +85,10 @@ func (s *Stack) Multiply() error {
 	return nil
 }
 
+func (s *Stack) Clear() {
+
+}
+
 func StackMachine(commands string) (int, error) {
 	return 0, errors.New("")
 }

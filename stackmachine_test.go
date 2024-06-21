@@ -22,8 +22,8 @@ Report error for invalid inputs
 report error for any number below 0 or over 50000 done
 report error for empty string done
 report error for adding with less than 2 numbers done
-report error for subtracting with less than 2 numbers
-report error for multiplying with less than 2 numbers
+report error for subtracting with less than 2 numbers done
+report error for multiplying with less than 2 numbers done
 report error if clear is last command and stack is empty
 
 */
@@ -400,6 +400,21 @@ func TestReportsErrorMultiplyingAboveMaximumValidValue(t *testing.T) {
 	if err == nil {
 		t.Error("expected error when multiplying with less than two numbers in stack")
 	}
+}
+
+func TestClearsStack(t *testing.T) {
+	var stack Stack
+
+	want := true
+	stack.Push(5)
+	stack.Push(7)
+	stack.Clear()
+	got := stack.isEmpty()
+
+	if got != want {
+		t.Errorf("got %v expected %v", got, want)
+	}
+
 }
 
 /*
