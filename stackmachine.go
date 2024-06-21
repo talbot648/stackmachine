@@ -86,7 +86,7 @@ func (s *Stack) Multiply() error {
 }
 
 func (s *Stack) Clear() {
-
+	*s = nil
 }
 
 func StackMachine(commands string) (int, error) {
