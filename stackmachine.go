@@ -78,6 +78,9 @@ func (s *Stack) Multiply() error {
 	lastElement, _ := s.Pop()
 	secondLastElement, _ := s.Pop()
 	multipliedTotal := lastElement * secondLastElement
+	if !isNumberValid(multipliedTotal) {
+		return errors.New("error: total is an invalid value")
+	}
 	s.Push(multipliedTotal)
 	return nil
 }

@@ -363,6 +363,19 @@ func TestReportsErrorMultiplyingWithInvalidStackSize(t *testing.T) {
 	}
 }
 
+func TestReportsErrorMultiplyingAboveMaximumValidValue(t *testing.T) {
+	var stack Stack
+
+	stack.Push(25001)
+	stack.Push(2)
+
+	err := stack.Multiply()
+
+	if err == nil {
+		t.Error("expected error when multiplying with less than two numbers in stack")
+	}
+}
+
 /*
 All these tests must pass for completion
 */
