@@ -30,55 +30,45 @@ report error if clear is last command and stack is empty
 
 // Write your own TDD tests here as you develop
 func TestGivenStringCanBeSplit(t *testing.T) {
-	//Arrange
+
 	givenString := "5 6 8"
 	want := []string{"5", "6", "8"}
 
-	//Act
 	stringSplit, _ := splitString(givenString)
 
-	//Assert
 	if !reflect.DeepEqual(stringSplit, want) {
 		t.Error("expected string to split")
 	}
 }
 
 func TestSplitStringWithOneIten(t *testing.T) {
-	//Arrange
 	givenString := "5"
 	want := []string{"5"}
 
-	//Act
 	stringSplit, _ := splitString(givenString)
 
-	//Assert
 	if !reflect.DeepEqual(stringSplit, want) {
 		t.Error("expected string to split")
 	}
 }
 
 func TestReportsErrorWhenSplittingEmptyString(t *testing.T) {
-	//Arrange
+
 	givenString := ""
 
-	//Act
 	_, err := splitString(givenString)
 
-	//Assert
 	if err == nil {
 		t.Error("expected error when splitting empty string")
 	}
 }
 
 func TestPushesAndPopsNumber(t *testing.T) {
-	//Arrange
 	var stack Stack
 
-	//Act
 	numToPush := 5
 	stack.Push(numToPush)
 
-	//Assert
 	got, _ := stack.Pop()
 	want := numToPush
 
@@ -88,82 +78,65 @@ func TestPushesAndPopsNumber(t *testing.T) {
 }
 
 func TestAcceptsPushingMaximumValidNumber(t *testing.T) {
-	//Arrange
 	var stack Stack
 
-	//Act
 	numToPush := 50000
 	err := stack.Push(numToPush)
 
-	//Assert
 	if err != nil {
 		t.Error("expected no error with pushing the maximum valid number")
 	}
 }
 
 func TestAcceptsPushingMinimumValidNumber(t *testing.T) {
-	//Arrange
 	var stack Stack
 
-	//Act
 	numToPush := 0
 	err := stack.Push(numToPush)
 
-	//Assert
 	if err != nil {
 		t.Error("expected no error with pushing the minimum valid number")
 	}
 }
 
 func TestRejectsPushingBelowMinimumValidNumber(t *testing.T) {
-	//Arrange
 	var stack Stack
 
-	//Act
 	numToPush := -1
 	err := stack.Push(numToPush)
 
-	//Assert
 	if err == nil {
 		t.Error("expected error with pushing minimum invalid number")
 	}
 }
 
 func TestReportsErrorWhenPoppingEmptyStack(t *testing.T) {
-	//Arrange
 	var stack Stack
 
-	//Act
 	_, err := stack.Pop()
 
-	//Assert
 	if err == nil {
 		t.Error("expected error when popping from and empty stack")
 	}
 }
 
 func TestLastElementIsPopped(t *testing.T) {
-	//Arrange
 	var stack Stack
 
-	//Act
 	stack.Push(5)
 	stack.Push(7)
 	want := 7
 	got, _ := stack.Pop()
 
-	//Arrange
 	if got != want {
 		t.Errorf("got %v, expected %v", got, want)
 	}
 
 }
 
-func TestLastElementIsPoppedWithConsequtivePops(t *testing.T) {
-	//Arrange
+func TestCorectElementIsPoppedWithConsequtivePops(t *testing.T) {
 	var stack Stack
 
-	//Act
 	stack.Push(5)
 	stack.Push(7)
 
@@ -171,7 +144,6 @@ func TestLastElementIsPoppedWithConsequtivePops(t *testing.T) {
 	stack.Pop()
 	got, _ := stack.Pop()
 
-	//Arrange
 	if got != want {
 		t.Errorf("got %v, expected %v", got, want)
 	}
@@ -179,10 +151,8 @@ func TestLastElementIsPoppedWithConsequtivePops(t *testing.T) {
 }
 
 func TestStackStartsEmpty(t *testing.T) {
-	//Arrange/Act
 	var stack Stack
 
-	//Assert
 	got := stack.isEmpty()
 	want := true
 
@@ -192,29 +162,23 @@ func TestStackStartsEmpty(t *testing.T) {
 }
 
 func TestDuplicateNumber(t *testing.T) {
-	//Arrange
 	var stack Stack
 	stack.Push(7)
 
-	//Act
 	stack.Dup()
 	numOne, _ := stack.Pop()
 	numTwo, _ := stack.Pop()
 
-	//Assert
 	if numOne != numTwo {
 		t.Error("expected last element in stack to be duplicated")
 	}
 }
 
 func TestReportsErrorWhenDupEmptyStack(t *testing.T) {
-	//Arrange
 	var stack Stack
 
-	//Act
 	err := stack.Dup()
 
-	//Assert
 	if err == nil {
 		t.Error("expected error when duplicating empty stack")
 	}
@@ -222,17 +186,14 @@ func TestReportsErrorWhenDupEmptyStack(t *testing.T) {
 }
 
 func TestAddNumbers(t *testing.T) {
-	//Arrange
 	var stack Stack
 	stack.Push(5)
 	stack.Push(7)
 
-	//Act
 	want := 12
 	stack.Add()
 	got, _ := stack.Pop()
 
-	//Assert
 	if got != want {
 		t.Errorf("got %v expected %v", got, want)
 	}
@@ -240,17 +201,14 @@ func TestAddNumbers(t *testing.T) {
 }
 
 func TestAddNumbersToMaximumValidNumber(t *testing.T) {
-	//Arrange
 	var stack Stack
 	stack.Push(49999)
 	stack.Push(1)
 
-	//Act
 	want := 50000
 	stack.Add()
 	got, _ := stack.Pop()
 
-	//Assert
 	if got != want {
 		t.Errorf("got %v expected %v", got, want)
 	}
@@ -258,17 +216,14 @@ func TestAddNumbersToMaximumValidNumber(t *testing.T) {
 }
 
 func TestAddNumbersToMinimumValidNumber(t *testing.T) {
-	//Arrange
 	var stack Stack
 	stack.Push(0)
 	stack.Push(0)
 
-	//Act
 	want := 0
 	stack.Add()
 	got, _ := stack.Pop()
 
-	//Assert
 	if got != want {
 		t.Errorf("got %v expected %v", got, want)
 	}
@@ -276,14 +231,11 @@ func TestAddNumbersToMinimumValidNumber(t *testing.T) {
 }
 
 func TestReportsErrorAddingNumbersWithInvalidStackSize(t *testing.T) {
-	//Arrange
 	var stack Stack
 	stack.Push(5)
 
-	//Act
 	err := stack.Add()
 
-	//Assert
 	if err == nil {
 		t.Error("expected error when adding with one number in stack")
 	}
@@ -293,10 +245,8 @@ func TestReportsErrorWhenTotalIsAboveValidSize(t *testing.T) {
 	var stack Stack
 	stack.Push(49999)
 	stack.Push(2)
-	//Act
 	err := stack.Add()
 
-	//Assert
 	if err == nil {
 		t.Error("expected error when adding numbers above valid value")
 	}
@@ -320,17 +270,14 @@ func TestReportsErrorWhenTotalIsBelowValidSize(t *testing.T) {
 */
 
 func TestSubtractNumbers(t *testing.T) {
-	//Arrange
 	var stack Stack
 	stack.Push(3)
 	stack.Push(10)
 
-	//Act
 	want := 7
 	stack.Subtract()
 	got, _ := stack.Pop()
 
-	//Assert
 	if got != want {
 		t.Errorf("got %v expected %v", got, want)
 	}
@@ -338,63 +285,52 @@ func TestSubtractNumbers(t *testing.T) {
 }
 
 func TestSubtractNumbersToMinimumValidValue(t *testing.T) {
-	//Arrange
+
 	var stack Stack
 	stack.Push(5)
 	stack.Push(5)
 
-	//Act
 	want := 0
 	stack.Subtract()
 	got, _ := stack.Pop()
 
-	//Assert
 	if got != want {
 		t.Errorf("got %v expected %v", got, want)
 	}
 }
 
 func TestSubtractNumbersToMaximumValidValue(t *testing.T) {
-	//Arrange
 	var stack Stack
 	stack.Push(0)
 	stack.Push(50000)
 
-	//Act
 	want := 50000
 	stack.Subtract()
 	got, _ := stack.Pop()
 
-	//Assert
 	if got != want {
 		t.Errorf("got %v expected %v", got, want)
 	}
 }
 
 func TestReportsErrorSubtractingWithInvalidStackSize(t *testing.T) {
-	//Arrange
 	var stack Stack
 	stack.Push(5)
 
-	//Act
 	err := stack.Subtract()
 
-	//Assert
 	if err == nil {
 		t.Error("expected error when subtracting with an invalid stack size below two numbers")
 	}
 }
 
 func TestReportsErrorSubtractingBelowMinimumValidValue(t *testing.T) {
-	//Arrange
 	var stack Stack
 	stack.Push(6)
 	stack.Push(5)
 
-	//Act
 	err := stack.Subtract()
 
-	//Assert
 	if err == nil {
 		t.Error("expected error when subtracting to below minimum valid value ")
 	}
