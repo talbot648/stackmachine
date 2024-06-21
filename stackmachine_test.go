@@ -351,6 +351,32 @@ func TestMultiplyLastTwoNumbers(t *testing.T) {
 	}
 }
 
+func TestAcceptsMultiplyingToMaximumValidValue(t *testing.T) {
+	var stack Stack
+
+	stack.Push(25000)
+	stack.Push(2)
+
+	err := stack.Multiply()
+
+	if err != nil {
+		t.Error("expected no error when multiplying to maximum valid value")
+	}
+}
+
+func TestAcceptsMultiplyingToMinimumValidValue(t *testing.T) {
+	var stack Stack
+
+	stack.Push(25000)
+	stack.Push(0)
+
+	err := stack.Multiply()
+
+	if err != nil {
+		t.Error("expected no error when multiplying to minimum valid value")
+	}
+}
+
 func TestReportsErrorMultiplyingWithInvalidStackSize(t *testing.T) {
 	var stack Stack
 
