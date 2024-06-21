@@ -417,6 +417,34 @@ func TestClearsStack(t *testing.T) {
 
 }
 
+func TestAcceptsClearingEmptyStack(t *testing.T) {
+	var stack Stack
+
+	want := true
+	stack.Clear()
+	got := stack.isEmpty()
+
+	if got != want {
+		t.Errorf("got %v expected %v", got, want)
+	}
+}
+
+func TestAddingAllNumbersInStack(t *testing.T) {
+
+}
+
+func TestAcceptsAddingAllNumbersToMaximumValidValue(t *testing.T) {
+
+}
+
+func TestReportsErrorWhenAddingAllNumbersOnEmptyStack(t *testing.T) {
+
+}
+
+func TestReportsErrorWhenAddingAllNumbersAboveMaximumValidValue(t *testing.T) {
+
+}
+
 /*
 All these tests must pass for completion
 */
