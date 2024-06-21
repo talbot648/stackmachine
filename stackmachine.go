@@ -89,6 +89,21 @@ func (s *Stack) Clear() {
 	*s = nil
 }
 
+func (s *Stack) Sum() error {
+	if s.isEmpty() {
+		return errors.New("error: cannot add all numbers of an empty stack")
+	}
+	total := 0
+	for _, i := range *s {
+		total += i
+	}
+	if !isNumberValid(total) {
+		return errors.New("error: total is an invalid value")
+	}
+	s.Push(total)
+	return nil
+}
+
 func StackMachine(commands string) (int, error) {
 	return 0, errors.New("")
 }

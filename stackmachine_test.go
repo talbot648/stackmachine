@@ -430,19 +430,60 @@ func TestAcceptsClearingEmptyStack(t *testing.T) {
 }
 
 func TestAddingAllNumbersInStack(t *testing.T) {
+	var stack Stack
+
+	want := 28
+	stack.Push(10)
+	stack.Push(4)
+	stack.Push(12)
+	stack.Push(2)
+	stack.Sum()
+	got, _ := stack.Pop()
+
+	if got != want {
+		t.Errorf("got %v expected %v", got, want)
+	}
 
 }
 
 func TestAcceptsAddingAllNumbersToMaximumValidValue(t *testing.T) {
+	var stack Stack
 
+	want := 50000
+	stack.Push(49990)
+	stack.Push(4)
+	stack.Push(5)
+	stack.Push(1)
+	stack.Sum()
+	got, _ := stack.Pop()
+
+	if got != want {
+		t.Errorf("got %v expected %v", got, want)
+	}
 }
 
 func TestReportsErrorWhenAddingAllNumbersOnEmptyStack(t *testing.T) {
+	var stack Stack
 
+	err := stack.Sum()
+
+	if err == nil {
+		t.Error("expected error when adding all numbers in an empty stack")
+	}
 }
 
-func TestReportsErrorWhenAddingAllNumbersAboveMaximumValidValue(t *testing.T) {
+func TestReportsErrorWhenTotalOfAllNumbersAddedIsAboveMaximumValidValue(t *testing.T) {
+	var stack Stack
 
+	stack.Push(49990)
+	stack.Push(4)
+	stack.Push(5)
+	stack.Push(2)
+	err := stack.Sum()
+
+	if err == nil {
+		t.Error("expected error when total is above maximum valid value")
+	}
 }
 
 /*
