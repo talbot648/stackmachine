@@ -429,6 +429,25 @@ func TestAcceptsClearingEmptyStack(t *testing.T) {
 	}
 }
 
+func TestSumMethodPopsAllElementsInStackBeforeAdding(t *testing.T) {
+	var stack Stack
+
+	want := true
+	stack.Push(50)
+	stack.Push(4)
+	stack.Push(5)
+	stack.Push(2)
+	stack.Sum()
+
+	stack.Pop()
+	got := stack.isEmpty()
+
+	if got != want {
+		t.Error("expect stack to be empty after popping the total sum value")
+	}
+
+}
+
 func TestAddingAllNumbersInStack(t *testing.T) {
 	var stack Stack
 

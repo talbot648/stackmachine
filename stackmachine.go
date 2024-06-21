@@ -95,6 +95,7 @@ func (s *Stack) Sum() error {
 	}
 	total := 0
 	for _, i := range *s {
+		i, _ = s.Pop()
 		total += i
 	}
 	if !isNumberValid(total) {
