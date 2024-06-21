@@ -299,7 +299,7 @@ func TestSubtractNumbersToMinimumValidValue(t *testing.T) {
 	}
 }
 
-func TestSubtractNumbersToMaximumValidValue(t *testing.T) {
+func TestAcceptsTotalSubtractedNumberToMaximumValidValue(t *testing.T) {
 	var stack Stack
 	stack.Push(0)
 	stack.Push(50000)
@@ -324,7 +324,7 @@ func TestReportsErrorSubtractingWithInvalidStackSize(t *testing.T) {
 	}
 }
 
-func TestReportsErrorSubtractingBelowMinimumValidValue(t *testing.T) {
+func TestReportsErrorWhenSubtractingTotalIsBelowMinimumValidValue(t *testing.T) {
 	var stack Stack
 	stack.Push(6)
 	stack.Push(5)
@@ -333,6 +333,33 @@ func TestReportsErrorSubtractingBelowMinimumValidValue(t *testing.T) {
 
 	if err == nil {
 		t.Error("expected error when subtracting to below minimum valid value ")
+	}
+}
+
+func TestMultiplyLastTwoNumbers(t *testing.T) {
+	var stack Stack
+
+	stack.Push(5)
+	stack.Push(6)
+
+	want := 30
+	stack.Multiply()
+	got, _ := stack.Pop()
+
+	if got != want {
+		t.Errorf("got %v expected %v", got, want)
+	}
+}
+
+func TestReportsErrorMultiplyingWithInvalidStackSize(t *testing.T) {
+	var stack Stack
+
+	stack.Push(5)
+
+	err := stack.Multiply()
+
+	if err == nil {
+		t.Error("expected error when multiplying with less than two numbers in stack")
 	}
 }
 

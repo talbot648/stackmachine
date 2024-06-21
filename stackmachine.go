@@ -70,6 +70,18 @@ func (s *Stack) Subtract() error {
 	return nil
 }
 
+func (s *Stack) Multiply() error {
+	if !isStackValid(s) {
+		return errors.New("error: cannot multiply with less than two numbers in stack")
+
+	}
+	lastElement, _ := s.Pop()
+	secondLastElement, _ := s.Pop()
+	multipliedTotal := lastElement * secondLastElement
+	s.Push(multipliedTotal)
+	return nil
+}
+
 func StackMachine(commands string) (int, error) {
 	return 0, errors.New("")
 }
