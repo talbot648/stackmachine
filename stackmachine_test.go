@@ -87,7 +87,7 @@ func TestPushesAndPopsNumber(t *testing.T) {
 	}
 }
 
-func TestPushingMaximumValidNumber(t *testing.T) {
+func TestAcceptsPushingMaximumValidNumber(t *testing.T) {
 	//Arrange
 	var stack Stack
 
@@ -101,7 +101,7 @@ func TestPushingMaximumValidNumber(t *testing.T) {
 	}
 }
 
-func TestPushingMinimumValidNumber(t *testing.T) {
+func TestAcceptsPushingMinimumValidNumber(t *testing.T) {
 	//Arrange
 	var stack Stack
 
@@ -115,7 +115,7 @@ func TestPushingMinimumValidNumber(t *testing.T) {
 	}
 }
 
-func TestReportPushingBelowMinimumValidNumber(t *testing.T) {
+func TestRejectsPushingBelowMinimumValidNumber(t *testing.T) {
 	//Arrange
 	var stack Stack
 
