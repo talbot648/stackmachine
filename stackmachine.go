@@ -130,7 +130,10 @@ func stackMachine(commands string) (int, error) {
 				return 0, errors.New("")
 			}
 		case "POP":
-			stack.Pop()
+			_, err := stack.Pop()
+			if err != nil {
+				return 0, errors.New("")
+			}
 		}
 		numToPush, err := strconv.Atoi(i)
 		if err == nil {

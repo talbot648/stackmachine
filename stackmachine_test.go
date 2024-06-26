@@ -601,6 +601,15 @@ func TestReturnsCorrectNumberAfterPop(t *testing.T) {
 
 }
 
+func TestReturnsErrorWhenPoppingEmptyStack(t *testing.T) {
+
+	_, err := stackMachine("POP")
+
+	if err == nil {
+		t.Error("expected error when poping from empty stack")
+	}
+}
+
 /*
 All these tests must pass for completion
 */
