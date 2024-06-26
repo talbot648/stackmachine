@@ -513,6 +513,16 @@ func TestReturnsErrorForNoCommand(t *testing.T) {
 	}
 }
 
+func TestReturnsSingleNumber(t *testing.T) {
+	want := 99
+	got, _ := stackMachine("99")
+
+	if got != want {
+		t.Errorf("got %v, expected %v", got, want)
+	}
+
+}
+
 /*
 All these tests must pass for completion
 */
