@@ -590,7 +590,7 @@ func TestReturnsErrorWhenMultipleOfTwoValuesIsTooLarge(t *testing.T) {
 	}
 }
 
-func TestReturnsCorrectNumberAfterPop(t *testing.T) {
+func TestReturnsCorrectPoppedNumber(t *testing.T) {
 
 	want := 5
 	got, _ := stackMachine("5 7 POP")
@@ -606,7 +606,30 @@ func TestReturnsErrorWhenPoppingEmptyStack(t *testing.T) {
 	_, err := stackMachine("POP")
 
 	if err == nil {
-		t.Error("expected error when poping from empty stack")
+		t.Error("expected error when popping from empty stack")
+	}
+}
+
+func TestReturnsDuplicatedNumber(t *testing.T) {
+	want := 5
+
+	got, gotErr := stackMachine("5 DUP POP")
+
+	if gotErr != nil {
+		t.Error("unexpected error")
+	}
+
+	if got != want {
+		t.Errorf("got %v, expected %v", got, want)
+	}
+}
+
+func TestReturnsErrorWhenDuplicatingEmptyStack(t *testing.T) {
+
+	_, err := stackMachine("DUP")
+
+	if err == nil {
+		t.Error("Expected error to be returned when duplicating empty stack")
 	}
 }
 
