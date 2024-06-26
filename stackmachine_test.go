@@ -551,11 +551,31 @@ func TestReturnsSumOfTwoValues(t *testing.T) {
 
 }
 
+func TestAcceptMaximumTotalValidReturnValueFromSumOfTwoValues(t *testing.T) {
+	want := 50000
+	got, _ := stackMachine("49999 1 +")
+
+	if got != want {
+		t.Errorf("got %v, expected %v", got, want)
+	}
+
+}
+
+func TestAcceptMinimumTotalValidReturnValueFromSumOfTwoValues(t *testing.T) {
+	want := 0
+	got, _ := stackMachine("0 0 +")
+
+	if got != want {
+		t.Errorf("got %v, expected %v", got, want)
+	}
+
+}
+
 func TestReturnsErrorWhenSumOfTwoValuesIsTooLarge(t *testing.T) {
-	_, err := stackMachine("49999 5 +")
+	_, err := stackMachine("49999 2 +")
 
 	if err == nil {
-		t.Error("expected error when sum is too high")
+		t.Error("expected error when the total number from a sum is too high")
 	}
 }
 
