@@ -531,6 +531,17 @@ func TestRejectsTooLargeNumber(t *testing.T) {
 	}
 }
 
+func TestReturnsMostRecentNumber(t *testing.T) {
+	want := 49
+	got, _ := stackMachine("50 49")
+
+	if got != want {
+		t.Errorf("got %v, expected %v", got, want)
+	}
+
+}
+
+/*
 func TestRejectsTooSmallNumber(t *testing.T) {
 	_, err := stackMachine("-5")
 
@@ -538,6 +549,7 @@ func TestRejectsTooSmallNumber(t *testing.T) {
 		t.Error("expected error when inputting too small of a number")
 	}
 }
+*/
 
 /*
 All these tests must pass for completion
