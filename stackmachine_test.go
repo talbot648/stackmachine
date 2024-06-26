@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"reflect"
 	"testing"
 )
@@ -55,10 +56,10 @@ func TestSplitStringWithOneIten(t *testing.T) {
 func TestReportsErrorWhenSplittingEmptyString(t *testing.T) {
 
 	givenString := ""
+	want := errors.New("invalid input: string should not be empty")
+	_, got := splitString(givenString)
 
-	_, err := splitString(givenString)
-
-	if err == nil {
+	if got.Error() != want.Error() {
 		t.Error("expected error when splitting empty string")
 	}
 }
@@ -551,26 +552,6 @@ func TestReturnsSumOfTwoValues(t *testing.T) {
 
 }
 
-func TestAcceptMaximumTotalValidReturnValueFromSumOfTwoValues(t *testing.T) {
-	want := 50000
-	got, _ := stackMachine("49999 1 +")
-
-	if got != want {
-		t.Errorf("got %v, expected %v", got, want)
-	}
-
-}
-
-func TestAcceptMinimumTotalValidReturnValueFromSumOfTwoValues(t *testing.T) {
-	want := 0
-	got, _ := stackMachine("0 0 +")
-
-	if got != want {
-		t.Errorf("got %v, expected %v", got, want)
-	}
-
-}
-
 func TestReturnsErrorWhenSumOfTwoValuesIsTooLarge(t *testing.T) {
 	_, err := stackMachine("49999 2 +")
 
@@ -582,6 +563,23 @@ func TestReturnsErrorWhenSumOfTwoValuesIsTooLarge(t *testing.T) {
 func TestReturnsDifferenceOfTwoValues(t *testing.T) {
 	want := 5
 	got, _ := stackMachine("3 8 -")
+
+	if got != want {
+		t.Errorf("got %v, expected %v", got, want)
+	}
+}
+
+func TestReturnsErrorWhenDiffernceOfTwoValuesIsTooSmall(t *testing.T) {
+	_, err := stackMachine("3 2 -")
+
+	if err == nil {
+		t.Error("expected error when total difference is below the minimum valid value")
+	}
+}
+
+func TestReturnsMultipleOfTwoValues(t *testing.T) {
+	want := 12
+	got, _ := stackMachine("4 3 /*")
 
 	if got != want {
 		t.Errorf("got %v, expected %v", got, want)

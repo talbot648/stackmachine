@@ -11,11 +11,11 @@ The following commands must be implemented:
 - An integer (from 0 to 50000): the machine pushes this integer onto the stack
 - "POP": the machine removes the most recently pushed number from the stack
 - "DUP": duplicate the last number pushed on the stack (or keep the stack empty)
-- "+": pop the most recent two numbers; add them together; push the result. If an overflow occurs (result higher than 50000) return an error
-- "-": pop the most recent two numbers; subtract the second from the first most recent. push the result. If the result is below zero, return an error
+- "+": pop the most recent two numbers; add them together; push the result. If an overflow occurs (result higher than 50000) return an error done 
+- "-": pop the most recent two numbers; subtract the second from the first most recent. push the result. If the result is below zero, return an error done
 - "\*" pop the top two elements off the stack, multiply them together, push the result onto the stack
 - "CLEAR" empties the stack so it has no elements on it
-- "SUM" pops all elements off the stack, adds them together, and pushes the result onto the stack. SUM on an empty stack returns an error.
+- "SUM" pops all elements off the stack, adds them together, and pushes the result onto the stack. SUM on an empty stack returns an error. 
 
 Any other input is invalid. the machine must stop and return an error.
 
