@@ -113,6 +113,10 @@ func stackMachine(commands string) (int, error) {
 		return 0, errors.New("")
 	}
 	for _, i := range splitString {
+		switch i {
+		case "+":
+			stack.Add()
+		}
 		numToPush, err := strconv.Atoi(i)
 		if err == nil {
 			err := stack.Push(numToPush)

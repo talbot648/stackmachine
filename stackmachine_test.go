@@ -541,6 +541,16 @@ func TestReturnsMostRecentNumber(t *testing.T) {
 
 }
 
+func TestReturnsSumOfTwoValues(t *testing.T) {
+	want := 18
+	got, _ := stackMachine("10 8 +")
+
+	if got != want {
+		t.Errorf("got %v, expected %v", got, want)
+	}
+
+}
+
 /*
 func TestRejectsTooSmallNumber(t *testing.T) {
 	_, err := stackMachine("-5")
