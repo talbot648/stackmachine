@@ -579,6 +579,15 @@ func TestReturnsErrorWhenSumOfTwoValuesIsTooLarge(t *testing.T) {
 	}
 }
 
+func TestReturnsDifferenceOfTwoValues(t *testing.T) {
+	want := 5
+	got, _ := stackMachine("3 8 -")
+
+	if got != want {
+		t.Errorf("got %v, expected %v", got, want)
+	}
+}
+
 /*
 func TestRejectsTooSmallNumber(t *testing.T) {
 	_, err := stackMachine("-5")
