@@ -124,7 +124,7 @@ func stackMachine(commands string) (int, error) {
 			if err != nil {
 				return 0, errors.New("")
 			}
-		case "/*":
+		case "*":
 			err := stack.Multiply()
 			if err != nil {
 				return 0, errors.New("")

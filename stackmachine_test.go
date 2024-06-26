@@ -104,9 +104,9 @@ func TestRejectsPushingBelowMinimumValidNumber(t *testing.T) {
 	var stack Stack
 
 	numToPush := -1
-	err := stack.Push(numToPush)
-
-	if err == nil {
+	want := errors.New("error: pushing invalid number")
+	got := stack.Push(numToPush)
+	if got.Error() != want.Error() {
 		t.Error("expected error with pushing minimum invalid number")
 	}
 }
@@ -114,9 +114,10 @@ func TestRejectsPushingBelowMinimumValidNumber(t *testing.T) {
 func TestReportsErrorWhenPoppingEmptyStack(t *testing.T) {
 	var stack Stack
 
-	_, err := stack.Pop()
+	want := errors.New("cannot pop from an empty stack")
+	_, got := stack.Pop()
 
-	if err == nil {
+	if got.Error() != want.Error() {
 		t.Error("expected error when popping from and empty stack")
 	}
 }
@@ -178,9 +179,10 @@ func TestDuplicateNumber(t *testing.T) {
 func TestReportsErrorWhenDupEmptyStack(t *testing.T) {
 	var stack Stack
 
-	err := stack.Dup()
+	want := errors.New("error: cannot duplicate empty stack")
+	got := stack.Dup()
 
-	if err == nil {
+	if got.Error() != want.Error() {
 		t.Error("expected error when duplicating empty stack")
 	}
 
@@ -235,40 +237,27 @@ func TestReportsErrorAddingNumbersWithInvalidStackSize(t *testing.T) {
 	var stack Stack
 	stack.Push(5)
 
-	err := stack.Add()
+	want := errors.New("error: cannot add with less than two numbers in stack")
+	got := stack.Add()
 
-	if err == nil {
+	if got.Error() != want.Error() {
 		t.Error("expected error when adding with one number in stack")
 	}
 }
 
 func TestReportsErrorWhenTotalIsAboveValidSize(t *testing.T) {
 	var stack Stack
+
 	stack.Push(49999)
 	stack.Push(2)
-	err := stack.Add()
 
-	if err == nil {
+	want := errors.New("error: total is an invalid value")
+	got := stack.Add()
+
+	if got.Error() != want.Error() {
 		t.Error("expected error when adding numbers above valid value")
 	}
 }
-
-/*
-func TestReportsErrorWhenTotalIsBelowValidSize(t *testing.T) {
-	//Arrange
-	var stack Stack
-	stack.Push(0)
-	stack.Push(-2)
-	//Act
-	fmt.Println(stack)
-	err := stack.Add()
-
-	//Assert
-	if err == nil {
-		t.Error("expected error when adding numbers above valid value")
-	}
-}
-*/
 
 func TestSubtractNumbers(t *testing.T) {
 	var stack Stack
@@ -318,9 +307,10 @@ func TestReportsErrorSubtractingWithInvalidStackSize(t *testing.T) {
 	var stack Stack
 	stack.Push(5)
 
-	err := stack.Subtract()
+	want := errors.New("error: cannot subtract with less than two numbers in stack")
+	got := stack.Subtract()
 
-	if err == nil {
+	if got.Error() != want.Error() {
 		t.Error("expected error when subtracting with an invalid stack size below two numbers")
 	}
 }
@@ -330,9 +320,10 @@ func TestReportsErrorWhenSubtractingTotalIsBelowMinimumValidValue(t *testing.T) 
 	stack.Push(6)
 	stack.Push(5)
 
-	err := stack.Subtract()
+	want := errors.New("error: total is an invalid value")
+	got := stack.Subtract()
 
-	if err == nil {
+	if got.Error() != want.Error() {
 		t.Error("expected error when subtracting to below minimum valid value ")
 	}
 }
@@ -383,9 +374,10 @@ func TestReportsErrorMultiplyingWithInvalidStackSize(t *testing.T) {
 
 	stack.Push(5)
 
-	err := stack.Multiply()
+	want := errors.New("error: cannot multiply with less than two numbers in stack")
+	got := stack.Multiply()
 
-	if err == nil {
+	if got.Error() != want.Error() {
 		t.Error("expected error when multiplying with less than two numbers in stack")
 	}
 }
@@ -396,10 +388,11 @@ func TestReportsErrorMultiplyingAboveMaximumValidValue(t *testing.T) {
 	stack.Push(25001)
 	stack.Push(2)
 
-	err := stack.Multiply()
+	want := errors.New("error: total is an invalid value")
+	got := stack.Multiply()
 
-	if err == nil {
-		t.Error("expected error when multiplying with less than two numbers in stack")
+	if got.Error() != want.Error() {
+		t.Error("expected error when the total from multiplying two values is above maximum valid value")
 	}
 }
 
@@ -485,9 +478,10 @@ func TestAcceptsAddingAllNumbersToMaximumValidValue(t *testing.T) {
 func TestReportsErrorWhenAddingAllNumbersOnEmptyStack(t *testing.T) {
 	var stack Stack
 
-	err := stack.Sum()
+	want := errors.New("error: cannot add all numbers of an empty stack")
+	got := stack.Sum()
 
-	if err == nil {
+	if got.Error() != want.Error() {
 		t.Error("expected error when adding all numbers in an empty stack")
 	}
 }
@@ -499,9 +493,11 @@ func TestReportsErrorWhenTotalOfAllNumbersAddedIsAboveMaximumValidValue(t *testi
 	stack.Push(4)
 	stack.Push(5)
 	stack.Push(2)
-	err := stack.Sum()
 
-	if err == nil {
+	want := errors.New("error: total is an invalid value")
+	got := stack.Sum()
+
+	if got.Error() != want.Error() {
 		t.Error("expected error when total is above maximum valid value")
 	}
 }
@@ -579,7 +575,7 @@ func TestReturnsErrorWhenDiffernceOfTwoValuesIsTooSmall(t *testing.T) {
 
 func TestReturnsMultipleOfTwoValues(t *testing.T) {
 	want := 12
-	got, _ := stackMachine("4 3 /*")
+	got, _ := stackMachine("4 3 *")
 
 	if got != want {
 		t.Errorf("got %v, expected %v", got, want)
@@ -587,22 +583,12 @@ func TestReturnsMultipleOfTwoValues(t *testing.T) {
 }
 
 func TestReturnsErrorWhenMultipleOfTwoValuesIsTooLarge(t *testing.T) {
-	_, err := stackMachine("25001 2 /*")
+	_, err := stackMachine("25001 2 *")
 
 	if err == nil {
 		t.Error("expected error when total value from multipling two numbers is above maximum valid value")
 	}
 }
-
-/*
-func TestRejectsTooSmallNumber(t *testing.T) {
-	_, err := stackMachine("-5")
-
-	if err == nil {
-		t.Error("expected error when inputting too small of a number")
-	}
-}
-*/
 
 /*
 All these tests must pass for completion
