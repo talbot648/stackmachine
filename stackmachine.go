@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"strconv"
 	"strings"
 )
 
@@ -106,11 +107,19 @@ func (s *Stack) Sum() error {
 }
 
 func stackMachine(commands string) (int, error) {
-	_, err := splitString(commands)
+	var stack Stack
+	splitString, err := splitString(commands)
 	if err != nil {
 		return 0, errors.New("")
 	}
-	return 0, nil
+	for _, i := range splitString {
+		numToPush, err := strconv.Atoi(i)
+		if err == nil {
+			stack.Push(numToPush)
+		}
+	}
+	result, _ := stack.Pop()
+	return result, nil
 }
 
 func splitString(commands string) ([]string, error) {
