@@ -115,7 +115,10 @@ func stackMachine(commands string) (int, error) {
 	for _, i := range splitString {
 		switch i {
 		case "+":
-			stack.Add()
+			err := stack.Add()
+			if err != nil {
+				return 0, errors.New("")
+			}
 		}
 		numToPush, err := strconv.Atoi(i)
 		if err == nil {

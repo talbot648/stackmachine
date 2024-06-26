@@ -551,6 +551,14 @@ func TestReturnsSumOfTwoValues(t *testing.T) {
 
 }
 
+func TestReturnsErrorWhenSumOfTwoValuesIsTooLarge(t *testing.T) {
+	_, err := stackMachine("49999 5 +")
+
+	if err == nil {
+		t.Error("expected error when sum is too high")
+	}
+}
+
 /*
 func TestRejectsTooSmallNumber(t *testing.T) {
 	_, err := stackMachine("-5")
