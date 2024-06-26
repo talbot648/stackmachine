@@ -523,6 +523,22 @@ func TestReturnsSingleNumber(t *testing.T) {
 
 }
 
+func TestRejectsTooLargeNumber(t *testing.T) {
+	_, err := stackMachine("50001")
+
+	if err == nil {
+		t.Error("expected error when inputting too large of a number")
+	}
+}
+
+func TestRejectsTooSmallNumber(t *testing.T) {
+	_, err := stackMachine("-5")
+
+	if err == nil {
+		t.Error("expected error when inputting too small of a number")
+	}
+}
+
 /*
 All these tests must pass for completion
 */
