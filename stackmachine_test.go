@@ -590,6 +590,17 @@ func TestReturnsErrorWhenMultipleOfTwoValuesIsTooLarge(t *testing.T) {
 	}
 }
 
+func TestReturnsCorrectNumberAfterPop(t *testing.T) {
+
+	want := 5
+	got, _ := stackMachine("5 7 POP")
+
+	if got != want {
+		t.Errorf("got %v, expected %v", got, want)
+	}
+
+}
+
 /*
 All these tests must pass for completion
 */
