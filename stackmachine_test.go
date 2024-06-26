@@ -586,6 +586,14 @@ func TestReturnsMultipleOfTwoValues(t *testing.T) {
 	}
 }
 
+func TestReturnsErrorWhenMultipleOfTwoValuesIsTooLarge(t *testing.T) {
+	_, err := stackMachine("25001 2 /*")
+
+	if err == nil {
+		t.Error("expected error when total value from multipling two numbers is above maximum valid value")
+	}
+}
+
 /*
 func TestRejectsTooSmallNumber(t *testing.T) {
 	_, err := stackMachine("-5")

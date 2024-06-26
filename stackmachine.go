@@ -125,7 +125,10 @@ func stackMachine(commands string) (int, error) {
 				return 0, errors.New("")
 			}
 		case "/*":
-			stack.Multiply()
+			err := stack.Multiply()
+			if err != nil {
+				return 0, errors.New("")
+			}
 		}
 		numToPush, err := strconv.Atoi(i)
 		if err == nil {
