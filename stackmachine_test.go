@@ -633,6 +633,17 @@ func TestReturnsErrorWhenDuplicatingEmptyStack(t *testing.T) {
 	}
 }
 
+func TestReturnSummedStack(t *testing.T) {
+
+	want := 22
+
+	got, _ := stackMachine(" 5 7 6 4 SUM")
+
+	if got != want {
+		t.Errorf("got %v, expected %v", got, want)
+	}
+}
+
 /*
 All these tests must pass for completion
 */

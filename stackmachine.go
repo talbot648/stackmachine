@@ -139,6 +139,8 @@ func stackMachine(commands string) (int, error) {
 			if err != nil {
 				return 0, errors.New("")
 			}
+		case "SUM":
+			stack.Sum()
 		}
 		numToPush, err := strconv.Atoi(i)
 		if err == nil {
