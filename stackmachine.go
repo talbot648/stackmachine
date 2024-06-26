@@ -87,6 +87,7 @@ func (s *Stack) Multiply() error {
 }
 
 func (s *Stack) Clear() {
+
 	*s = nil
 }
 
@@ -114,46 +115,58 @@ func stackMachine(commands string) (int, error) {
 	}
 	for _, i := range splitString {
 		switch i {
+
 		case "+":
 			err := stack.Add()
 			if err != nil {
 				return 0, errors.New("")
 			}
+
 		case "-":
 			err := stack.Subtract()
 			if err != nil {
 				return 0, errors.New("")
 			}
+
 		case "*":
 			err := stack.Multiply()
 			if err != nil {
 				return 0, errors.New("")
 			}
+
 		case "POP":
 			_, err := stack.Pop()
 			if err != nil {
 				return 0, errors.New("")
 			}
+
 		case "DUP":
 			err := stack.Dup()
 			if err != nil {
 				return 0, errors.New("")
 			}
+
 		case "SUM":
 			err := stack.Sum()
 			if err != nil {
 				return 0, errors.New("")
 			}
+
 		case "CLEAR":
 			stack.Clear()
-		}
-		numToPush, err := strconv.Atoi(i)
-		if err == nil {
-			err := stack.Push(numToPush)
-			if err != nil {
-				return 0, errors.New("")
+
+		default:
+			numToPush, err := strconv.Atoi(i)
+			if err == nil {
+				err := stack.Push(numToPush)
+				if err != nil {
+					return 0, errors.New("")
+				}
 			}
 		}
+	}
+	if stack.isEmpty() {
+		return 0, errors.New("")
 	}
 	result, _ := stack.Pop()
 	return result, nil
