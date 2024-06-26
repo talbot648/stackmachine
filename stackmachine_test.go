@@ -653,11 +653,23 @@ func TestReturnErrorSummingEmptyStack(t *testing.T) {
 	}
 }
 
+func TestReturnClearedStack(t *testing.T) {
+	want := 0
+	got, err := stackMachine(" 5 6 7 4 CLEAR")
+	if err != nil {
+		t.Error("unexpected error")
+	}
+	if got != want {
+		t.Error("expected 0 from cleared stack")
+	}
+}
+
 /*
 All these tests must pass for completion
 */
 
 /*
+
 func TestAcceptanceTests(t *testing.T) {
 	tests := []struct {
 		name        string
@@ -698,7 +710,7 @@ func TestAcceptanceTests(t *testing.T) {
 
 	for _, test := range tests {
 
-		got, err := StackMachine(test.commands)
+		got, err := stackMachine(test.commands)
 
 		if test.expectedErr != nil {
 			if err == nil {

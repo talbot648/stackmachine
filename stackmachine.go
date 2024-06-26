@@ -144,6 +144,8 @@ func stackMachine(commands string) (int, error) {
 			if err != nil {
 				return 0, errors.New("")
 			}
+		case "CLEAR":
+			stack.Clear()
 		}
 		numToPush, err := strconv.Atoi(i)
 		if err == nil {
