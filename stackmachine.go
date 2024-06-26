@@ -140,7 +140,10 @@ func stackMachine(commands string) (int, error) {
 				return 0, errors.New("")
 			}
 		case "SUM":
-			stack.Sum()
+			err := stack.Sum()
+			if err != nil {
+				return 0, errors.New("")
+			}
 		}
 		numToPush, err := strconv.Atoi(i)
 		if err == nil {

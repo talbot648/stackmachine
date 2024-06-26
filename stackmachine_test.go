@@ -644,6 +644,15 @@ func TestReturnSummedStack(t *testing.T) {
 	}
 }
 
+func TestReturnErrorSummingEmptyStack(t *testing.T) {
+
+	_, err := stackMachine("SUM")
+
+	if err == nil {
+		t.Error("expected error to be returned when summing empty stack")
+	}
+}
+
 /*
 All these tests must pass for completion
 */
