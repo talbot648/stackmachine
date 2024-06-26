@@ -105,8 +105,12 @@ func (s *Stack) Sum() error {
 	return nil
 }
 
-func StackMachine(commands string) (int, error) {
-	return 0, errors.New("")
+func stackMachine(commands string) (int, error) {
+	_, err := splitString(commands)
+	if err != nil {
+		return 0, errors.New("")
+	}
+	return 0, nil
 }
 
 func splitString(commands string) ([]string, error) {

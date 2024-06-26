@@ -505,6 +505,14 @@ func TestReportsErrorWhenTotalOfAllNumbersAddedIsAboveMaximumValidValue(t *testi
 	}
 }
 
+func TestReturnsErrorForNoCommand(t *testing.T) {
+	_, err := stackMachine("")
+
+	if err == nil {
+		t.Error("expected error when calling stack machine with no command")
+	}
+}
+
 /*
 All these tests must pass for completion
 */
