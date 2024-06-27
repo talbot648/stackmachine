@@ -160,6 +160,7 @@ func stackMachine(commands string) (int, error) {
 			if err != nil {
 				return 0, errors.New("")
 			} else {
+
 				err := stack.Push(numToPush)
 				if err != nil {
 					return 0, errors.New("")
