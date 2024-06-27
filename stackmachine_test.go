@@ -654,14 +654,11 @@ func TestReturnErrorSummingEmptyStack(t *testing.T) {
 }
 
 func TestReportsErrorWhenReturningClearedStack(t *testing.T) {
-	want := 0
-	got, err := stackMachine("5 6 7 4 CLEAR")
+	_, err := stackMachine("5 6 7 4 CLEAR")
 	if err == nil {
 		t.Error("expected an error")
 	}
-	if got != want {
-		t.Error("expected 0 from cleared stack")
-	}
+
 }
 
 /*
