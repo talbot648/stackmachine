@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"reflect"
 	"testing"
 )
@@ -19,13 +20,13 @@ empty the stack
 multiply the last 2 numbers together with a \*
 SUM remove all numbers from stack, add them together and push number onto stack
 return the last element of the stack
-Report error for invalid inputs
+Report error for invalid inputs done
 report error for any number below 0 or over 50000 done
 report error for empty string done
 report error for adding with less than 2 numbers done
 report error for subtracting with less than 2 numbers done
 report error for multiplying with less than 2 numbers done
-report error if clear is last command and stack is empty
+report error if clear is last command and stack is empty done
 
 */
 
@@ -637,7 +638,7 @@ func TestReturnSummedStack(t *testing.T) {
 
 	want := 22
 
-	got, _ := stackMachine(" 5 7 6 4 SUM")
+	got, _ := stackMachine("5 7 6 4 SUM")
 
 	if got != want {
 		t.Errorf("got %v, expected %v", got, want)
@@ -653,7 +654,7 @@ func TestReturnErrorSummingEmptyStack(t *testing.T) {
 	}
 }
 
-func TestReportsErrorWhenReturningClearedStack(t *testing.T) {
+func TestReturnsErrorWhenReturningClearedStack(t *testing.T) {
 	want := 0
 	got, err := stackMachine("5 6 7 4 CLEAR")
 	if err == nil {
@@ -661,6 +662,14 @@ func TestReportsErrorWhenReturningClearedStack(t *testing.T) {
 	}
 	if got != want {
 		t.Error("expected 0 from cleared stack")
+	}
+}
+
+func TestReturnErrorForInvalidInput(t *testing.T) {
+	_, err := stackMachine("DOG CHILD 3")
+	fmt.Println(err)
+	if err == nil {
+		t.Error("expected error for invalid input")
 	}
 }
 

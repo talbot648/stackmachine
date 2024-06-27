@@ -157,7 +157,9 @@ func stackMachine(commands string) (int, error) {
 
 		default:
 			numToPush, err := strconv.Atoi(i)
-			if err == nil {
+			if err != nil {
+				return 0, errors.New("")
+			} else {
 				err := stack.Push(numToPush)
 				if err != nil {
 					return 0, errors.New("")
@@ -165,6 +167,7 @@ func stackMachine(commands string) (int, error) {
 			}
 		}
 	}
+
 	if stack.isEmpty() {
 		return 0, errors.New("")
 	}
