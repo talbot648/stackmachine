@@ -2,7 +2,6 @@ package main
 
 import (
 	"errors"
-	"fmt"
 	"reflect"
 	"testing"
 )
@@ -667,7 +666,6 @@ func TestReturnsErrorWhenReturningClearedStack(t *testing.T) {
 
 func TestReturnErrorForInvalidInput(t *testing.T) {
 	_, err := stackMachine("DOG CHILD 3")
-	fmt.Println(err)
 	if err == nil {
 		t.Error("expected error for invalid input")
 	}
