@@ -120,6 +120,17 @@ func handle_error(err error) (int, error) {
 }
 func stackMachine(commands string) (int, error) {
 	var stack Stack
+
+	result, err := executeCommands(commands, stack)
+	if err != nil {
+		return 0, errors.New("")
+	}
+
+	return result, nil
+
+}
+
+func executeCommands(commands string, stack Stack) (int, error) {
 	splitString, err := splitString(commands)
 	if err != nil {
 		handle_error(err)
@@ -175,6 +186,7 @@ func stackMachine(commands string) (int, error) {
 	}
 	result, _ := stack.Pop()
 	return result, nil
+
 }
 
 func splitString(commands string) ([]string, error) {
