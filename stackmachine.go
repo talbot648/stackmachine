@@ -111,70 +111,67 @@ func (s *Stack) Sum() error {
 	return nil
 }
 
+func handle_error(err error) (int, error) {
+	if err != nil {
+		return 0, errors.New("")
+
+	}
+	return 0, nil
+}
 func stackMachine(commands string) (int, error) {
 	var stack Stack
 	splitString, err := splitString(commands)
 	if err != nil {
-		return 0, errors.New("")
+		handle_error(err)
 	}
 	for _, i := range splitString {
 		switch i {
 
 		case "+":
-			err := stack.Add()
-			if err != nil {
-				return 0, errors.New("")
+			if err := stack.Add(); err != nil {
+				return handle_error(err)
 			}
 
 		case "-":
-			err := stack.Subtract()
-			if err != nil {
-				return 0, errors.New("")
+			if err := stack.Subtract(); err != nil {
+				return handle_error(err)
 			}
 
 		case "*":
-			err := stack.Multiply()
-			if err != nil {
-				return 0, errors.New("")
+			if err := stack.Multiply(); err != nil {
+				return handle_error(err)
 			}
 
 		case "POP":
-			_, err := stack.Pop()
-			if err != nil {
-				return 0, errors.New("")
+			if _, err := stack.Pop(); err != nil {
+				return handle_error(err)
 			}
 
 		case "DUP":
-			err := stack.Dup()
-			if err != nil {
-				return 0, errors.New("")
+			if err := stack.Dup(); err != nil {
+				return handle_error(err)
 			}
 
 		case "SUM":
-			err := stack.Sum()
-			if err != nil {
-				return 0, errors.New("")
+			if err := stack.Sum(); err != nil {
+				return handle_error(err)
 			}
-
 		case "CLEAR":
 			stack.Clear()
 
 		default:
-			numToPush, err := strconv.Atoi(i)
-			if err != nil {
-				return 0, errors.New("")
+			if numToPush, err := strconv.Atoi(i); err != nil {
+				return handle_error(err)
 			} else {
-
 				err := stack.Push(numToPush)
 				if err != nil {
-					return 0, errors.New("")
+					return handle_error(err)
 				}
 			}
 		}
 	}
-
 	if stack.isEmpty() {
-		return 0, errors.New("")
+		return handle_error(errors.New(""))
 	}
 	result, _ := stack.Pop()
 	return result, nil

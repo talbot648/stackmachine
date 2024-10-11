@@ -6,29 +6,6 @@ import (
 	"testing"
 )
 
-//Tests to write
-/*
-given string can be split done
-initialise stack done
-push to the stack done
-pop from the stack done
-add the last two numbers together
-subtract the last two numbers
-duplicate the last number done
-empty the stack
-multiply the last 2 numbers together with a \*
-SUM remove all numbers from stack, add them together and push number onto stack
-return the last element of the stack
-Report error for invalid inputs done
-report error for any number below 0 or over 50000 done
-report error for empty string done
-report error for adding with less than 2 numbers done
-report error for subtracting with less than 2 numbers done
-report error for multiplying with less than 2 numbers done
-report error if clear is last command and stack is empty done
-
-*/
-
 // Write your own TDD tests here as you develop
 func TestGivenStringCanBeSplit(t *testing.T) {
 
