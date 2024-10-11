@@ -25,7 +25,7 @@ func (s *Stack) Pop() (int, error) {
 		return 0, errors.New("cannot pop from an empty stack")
 	}
 	LastElementIndex := len(*s) - 1
-	LastElement := (*s)[LastElementIndex]
+	LastElement := getLastElement(s)
 	*s = (*s)[:LastElementIndex]
 	return LastElement, nil
 }
@@ -34,10 +34,14 @@ func (s *Stack) Dup() error {
 	if s.isEmpty() {
 		return errors.New("error: cannot duplicate empty stack")
 	}
-	LastElement := (*s)[len(*s)-1]
+	LastElement := getLastElement(s)
 	*s = append(*s, LastElement)
 	return nil
 
+}
+
+func getLastElement(s *Stack) int {
+	return (*s)[len(*s)-1]
 }
 
 func (s *Stack) Add() error {
